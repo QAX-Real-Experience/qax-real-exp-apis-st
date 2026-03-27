@@ -1,4 +1,4 @@
-# QAX Real Experience · APIs Java Serenity
+# QAX Real Experience · APIs Java Rest Assured
 
 Repositorio de automatización para pruebas de **APIs** usando **Java**, **Maven**, **Rest Assured** y **Serenity**, dentro del programa **QAX Real Experience** de **QAXpert**.
 
