@@ -13,37 +13,43 @@ En este repositorio se desarrollan automatizaciones orientadas al nivel **APIs**
 ## Estructura base del proyecto
 
 ```
-qax-real-exp-apis-st/
-│
-├── src/
-│   ├── test/
-│   │   ├── java/
-│   │   │   ├── runners/
-│   │   │   ├── steps/
-│   │   │   ├── tasks/
-│   │   │   ├── questions/
-│   │   │   └── utils/
-│   │   └── resources/
-│   │       ├── features/
-│   │       ├── data/
-│   │       └── serenity.conf
-│
-├── target/
-├── pom.xml
-├── .gitignore
-└── README.md
+src
+├── main
+└── test
+    ├── java
+    │   └── com/ninja4testing/api
+    │       ├── config
+    │       │   ├── Config.java
+    │       │   └── Endpoints.java
+    │       ├── models
+    │       │   ├── PostRequest.java
+    │       │   └── PostResponse.java
+    │       ├── runners
+    │       │   └── CreatePostTestRunner.java
+    │       ├── steps
+    │       │   └── CreatePostSteps.java
+    │       └── utils
+    │           └── DataFactory.java
+    └── resources
+        └── features
+            └── create_post.feature
+
 
 ```
 
-##Instalación
+## Instalación
 
 Pendiente de documentar.
 
-##Ejecución
+---
+
+## Ejecución
 
 Pendiente de documentar.
 
-##Reportes
+---
+
+## Reportes
 
 Pendiente de documentar.
 
