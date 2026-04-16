@@ -17,7 +17,7 @@ src
 ├── main
 └── test
     ├── java
-    │   └── com/ninja4testing/api
+    │   └── com/qaxTerminal/api
     │       ├── config
     │       │   ├── Config.java
     │       │   └── Endpoints.java
