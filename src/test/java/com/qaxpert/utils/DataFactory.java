@@ -11,7 +11,7 @@ public class DataFactory {
     }
 
     public static LoginRequest unregisteredUser(){
-        return buildLoginRequest("unregistereduser@email.com","455");
+        return buildLoginRequest("unregistereduser"+ System.currentTimeMillis()+ "@email.com","4550");
     }
 
     public static LoginRequest emptyPassword(){
