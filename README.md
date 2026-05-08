@@ -1,14 +1,21 @@
 # QAX Real Experience · APIs Java Rest Assured
 
-Repositorio de automatización para pruebas de **APIs** usando **Java**, **Maven**, **Rest Assured** y **Serenity**, dentro del programa **QAX Real Experience** de **QAXpert**.
+Repositorio de automatización para pruebas de **APIs** usando **Java**, **Maven**, **Rest Assured**,**Cucumber (BDD)** y **Serenity**, dentro del programa **QAX Real Experience** de **QAXpert**.
 
-Este espacio está destinado a que los aprendices apliquen en un contexto real las prácticas, técnicas y criterios de calidad trabajados previamente en sus **mentorías 1:1**, desarrollando automatizaciones sobre features asignadas durante el sprint.
-
+Este proyecto contiene la automatización de pruebas para el servicio de autenticación (login) de la plataforma QAX, utilizando **Java**, **Rest Assured**, **Cucumber (BDD)** y **Serenity Reports**.
 ## Objetivo
-Implementar pruebas automatizadas de APIs siguiendo el flujo de trabajo definido por QAX Real Experience, incluyendo buenas prácticas de automatización, versionamiento, revisión en pares y entregas mediante Pull Request.
+
+El objetivo es validar el comportamiento del endpoint de login de 1 aprendiz mediante distintos escenarios funcionales y negativos, asegurando la calidad del servicio.
 
 ## Alcance
-En este repositorio se desarrollan automatizaciones orientadas al nivel **APIs**, usando Java con Maven, Rest Assured y Serenity como stack principal.
+En este repositorio se desarrollan automatizaciones orientadas a cubrir los siguientes casos:
+
+- Login exitoso con credenciales válidas  
+- Usuario no registrado  
+- Credenciales inválidas  
+- Campos obligatorios faltantes  
+- Validación de formato  
+- Validación de campos de respuesta
 
 ## Estructura base del proyecto
 
@@ -17,42 +24,59 @@ src
 ├── main
 └── test
     ├── java
-    │   └── com/ninja4testing/api
+    │   └── com/qaxpert
     │       ├── config
     │       │   ├── Config.java
     │       │   └── Endpoints.java
     │       ├── models
-    │       │   ├── PostRequest.java
-    │       │   └── PostResponse.java
+    │       │   ├── AppMetaData.java
+    │       │   └── Identity.java
+	│       │   └── IdentityData.java
+	│       │   └── LoginRequest.java
+	│       │   └── LoginResponse.java
+	│       │   └── User.java
+	│       │   └── UserMetaData.java
     │       ├── runners
-    │       │   └── CreatePostTestRunner.java
+    │       │   └── LoginTestRunner.java
     │       ├── steps
-    │       │   └── CreatePostSteps.java
+    │       │   └── LoginSteps.java
     │       └── utils
     │           └── DataFactory.java
     └── resources
         └── features
-            └── create_post.feature
+            └── login.feature
 
 
 ```
 
 ## Instalación
 
-Pendiente de documentar.
+- Java
+- Maven instalado
+- IntelliJ IDEA
+- Rest Assured library added as a dependency
+- Cucumber added as a dependency
 
 ---
 
 ## Ejecución
 
-Pendiente de documentar.
+1. Localizar runners package
+2. Localizar LoginTestRunner.java
+3. Click derecho sobre la clase "LoginTestRunner"
+4. Click en "Run LoginTestRunner" 
 
 ---
 
 ## Reportes
 
-Pendiente de documentar.
+Después de ejecutar las pruebas, Cucumber genera automáticamente un reporte HTML con el detalle de la ejecución.
 
+1. Navegar al directorio donde se espera que se cree el reporte
+2. Localizar el folder "target"
+3. Localizar el folder "cucumber-reports"
+4. Localizar el file "login-report.html"
+5. Arrastrar el archivo login-report.html al navegador (Chrome recomendado)
 ---
 
 ## Referencias
