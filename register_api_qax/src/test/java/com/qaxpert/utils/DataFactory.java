@@ -6,9 +6,10 @@ import com.qaxpert.models.RegisterRequest;
 public class DataFactory {
 
     public static RegisterRequest registerANewUserSuccessfully(){
+        String uniqueEmail = "aprendiz" + System.currentTimeMillis() + "@qaxpert.com";
         return buildRegisterRequest(
-                "aprendiz1001@qaxpert.com"
-                ,"12345"
+                uniqueEmail
+                ,"12345678"
                 ,"Lopez"
                 ,"Bolivia"
                 ,"+59169784025");
@@ -18,9 +19,9 @@ public class DataFactory {
         return buildRegisterRequest(
                 "aprendiz1001@qaxpert.com"
                 ,"123456"
-                ,"lopez"
-                ,"Bolivia"
-                ,"+59169784025");
+                ,"Aprendiz Ninja For Testing"
+                ,"Colombia"
+                ,"+573001112233");
     }
 
     public static RegisterRequest customRegisterUser(
@@ -32,11 +33,17 @@ public class DataFactory {
         return buildRegisterRequest(email,password,fullname,country,wp);
     }
 
-    private static RegisterRequest buildRegisterRequest(String email, String password, String fullname, String country, String wp){
+    private static RegisterRequest buildRegisterRequest(
+            String email,
+            String password,
+            String fullname,
+            String country,
+            String wp){
         Data data = new Data();
         data.setFullname(fullname);
         data.setCountry(country);
         data.setWp(wp);
+
         RegisterRequest registerRequest = new RegisterRequest();
         registerRequest.setEmail(email);
         registerRequest.setPassword(password);

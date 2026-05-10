@@ -2,9 +2,7 @@ package com.qaxpert.steps;
 
 import com.qaxpert.config.Config;
 import com.qaxpert.config.Endpoints;
-import com.qaxpert.models.Data;
 import com.qaxpert.models.RegisterRequest;
-import io.cucumber.java.bs.A;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -12,7 +10,7 @@ import io.cucumber.java.en.When;
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
-import org.junit.Before;
+import io.cucumber.java.Before;
 import com.qaxpert.utils.DataFactory;
 
 import static io.restassured.RestAssured.given;
@@ -36,7 +34,7 @@ public class RegisterSteps {
     }
     @When("envio la solicitud de registro")
     public void envioLaSolicitudDeRegistro(){
-        ejecutarLogin();
+        ejecutarRegistro();
     }
     @Then("la respuesta debe tener un status {int}")
     public void validarStatusCodeDeLaRespuesta(int statusCode){
@@ -46,30 +44,19 @@ public class RegisterSteps {
     }
     @And("la respuesta debe contener el user_id del usuario registrado")
     public void obtenerUserId(){
-        response.then().body("user_id",notNullValue());
+        response.then()
+                .body("user.id",notNullValue())
+                .body("user.identities[0].user_id",notNullValue());
+
     }
     @And("la respuesta debe contener los datos principales del usuario registrado")
     public void obtenerDatosUsuarioRegistrado(){
         response.then()
-                .body("id",notNullValue())
-                .body("aud",notNullValue())
-                .body("role",notNullValue())
-                .body("email",notNullValue())
-                .body("email_confirmed_at",notNullValue())
-                .body("phone",notNullValue())
-                .body("last_sign_in_at",notNullValue())
-                .body("app_metadata",notNullValue());
-    }
-
-
-    private void ejecutarLogin(){
-        response = given()
-                .contentType(ContentType.JSON)
-                .accept(ContentType.JSON)
-                .header("apikey", Config.API_KEY)
-                .body(registerRequest)
-                .when()
-                .post(Endpoints.REGISTER);
+                .body("user.id",notNullValue())
+                .body("user.aud",equalTo("authenticated"))
+                .body("user.role",equalTo("authenticated"))
+                .body("user.email",notNullValue())
+                .body("user.email_confirmed_at",notNullValue());
     }
 
     @Given("que intento registrar un usuario con email {string}, password {string}, nombre completo {string}, pais {string} y whatsapp {string}")
@@ -79,7 +66,12 @@ public class RegisterSteps {
             String fullname,
             String country,
             String whatsapp){
-        registerRequest = DataFactory.customRegisterUser();
+        registerRequest = DataFactory.customRegisterUser(
+                email,
+                password,
+                fullname,
+                country,
+                whatsapp);
     }
 
     @And("la respuesta debe mostrar un mensaje de validacion {string}")
@@ -89,6 +81,16 @@ public class RegisterSteps {
     @Given("que ya existe un usuario registrado con un correo definido")
     public void registerAnExistentUser(){
         registerRequest = DataFactory.registerAUserWithExistingEmail();
+    }
+
+    private void ejecutarRegistro(){
+        response = given()
+                .contentType(ContentType.JSON)
+                .accept(ContentType.JSON)
+                .header("apikey", Config.API_KEY)
+                .body(registerRequest)
+                .when()
+                .post(Endpoints.REGISTER);
     }
 
 }
