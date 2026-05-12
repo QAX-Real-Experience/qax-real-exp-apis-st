@@ -1,0 +1,12 @@
+com\qaxpert\models\login\AppMetadata.class
+com\qaxpert\models\login\IdentityData.class
+com\qaxpert\runners\LoginTestRunner.class
+com\qaxpert\models\login\Identity.class
+com\qaxpert\utils\DataFactory.class
+com\qaxpert\models\login\UserMetadata.class
+com\qaxpert\models\login\User.class
+com\qaxpert\steps\LoginSteps.class
+com\qaxpert\models\login\LoginResponse.class
+com\qaxpert\config\Config.class
+com\qaxpert\models\login\LoginRequest.class
+com\qaxpert\config\Endpoints.class
